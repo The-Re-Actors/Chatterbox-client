@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/Chatterbox-client/static/css/main.460adad7.chunk.css",
-    "main.js": "/Chatterbox-client/static/js/main.1ef97d8c.chunk.js",
-    "main.js.map": "/Chatterbox-client/static/js/main.1ef97d8c.chunk.js.map",
+    "main.css": "/Chatterbox-client/static/css/main.05bbc877.chunk.css",
+    "main.js": "/Chatterbox-client/static/js/main.00925a24.chunk.js",
+    "main.js.map": "/Chatterbox-client/static/js/main.00925a24.chunk.js.map",
     "runtime-main.js": "/Chatterbox-client/static/js/runtime-main.5612a794.js",
     "runtime-main.js.map": "/Chatterbox-client/static/js/runtime-main.5612a794.js.map",
-    "static/js/2.9c5684f0.chunk.js": "/Chatterbox-client/static/js/2.9c5684f0.chunk.js",
-    "static/js/2.9c5684f0.chunk.js.map": "/Chatterbox-client/static/js/2.9c5684f0.chunk.js.map",
+    "static/js/2.1182d2c2.chunk.js": "/Chatterbox-client/static/js/2.1182d2c2.chunk.js",
+    "static/js/2.1182d2c2.chunk.js.map": "/Chatterbox-client/static/js/2.1182d2c2.chunk.js.map",
     "index.html": "/Chatterbox-client/index.html",
-    "static/css/main.460adad7.chunk.css.map": "/Chatterbox-client/static/css/main.460adad7.chunk.css.map",
-    "static/js/2.9c5684f0.chunk.js.LICENSE.txt": "/Chatterbox-client/static/js/2.9c5684f0.chunk.js.LICENSE.txt"
+    "static/css/main.05bbc877.chunk.css.map": "/Chatterbox-client/static/css/main.05bbc877.chunk.css.map",
+    "static/js/2.1182d2c2.chunk.js.LICENSE.txt": "/Chatterbox-client/static/js/2.1182d2c2.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.5612a794.js",
-    "static/js/2.9c5684f0.chunk.js",
-    "static/css/main.460adad7.chunk.css",
-    "static/js/main.1ef97d8c.chunk.js"
+    "static/js/2.1182d2c2.chunk.js",
+    "static/css/main.05bbc877.chunk.css",
+    "static/js/main.00925a24.chunk.js"
   ]
 }
