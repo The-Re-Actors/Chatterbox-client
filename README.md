@@ -5,7 +5,6 @@ Chatterbox allows users to pick a username upon entering, and start messaging wi
 # Links
 Link to back-end repo: https://github.com/The-Re-Actors/Chatterbox-API
 
-![Deployment Link](https://the-re-actors.github.io/Chatterbox-client/)
 Link to deployed website: https://the-re-actors.github.io/Chatterbox-client/
 
 # Planning Story
@@ -39,5 +38,5 @@ This project was executed with Create React App and real-time messaging capabili
 
 # Wireframes
 
-https://imgur.com/1NszYhv
+https://imgur.com/1NszYhv \
 https://imgur.com/m7WUR9v
