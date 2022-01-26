@@ -38,7 +38,7 @@ render () {
       show={this.state.show}
       variant={variant}
       onClose={this.handleClose}>
-      <div className='container'>
+      <div className='alert-body'>
         <Alert.Heading>{heading}</Alert.Heading>
         <p className='alert-body'>{message}</p>
       </div>

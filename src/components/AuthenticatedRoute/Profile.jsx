@@ -81,7 +81,7 @@ function Profile ({ msgAlert, user }) {
         <h3>Profile</h3>
         <Form onSubmit={onSubmitProfile}>
           <Form.Group controlId='email'>
-            <Form.Label>User name</Form.Label>
+            <Form.Label>UserName</Form.Label>
             <Form.Control
               required
               type='text'

@@ -34,9 +34,10 @@ function Chat ({ user }) {
     })
   })
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.value })
   }
+
 
   const handleColorChange = event => {
     setTextColor(event.target.value)
@@ -59,17 +60,18 @@ function Chat ({ user }) {
   }
 
   const handleKeyPress = event => {
+
     if (event.key === 'Enter' && !event.shiftKey) {
       onMessageSubmit(event)
     }
   }
 
-  const handleReset = event => {
+  const handleReset = (event) => {
     event.preventDefault()
     setState({ message: '' })
   }
 
-  const onMessageSubmit = event => {
+  const onMessageSubmit = (event) => {
     event.preventDefault()
     const { name, message } = state
     socket.emit('message', { name, message })

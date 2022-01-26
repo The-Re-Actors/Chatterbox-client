@@ -25,6 +25,7 @@
     "react-scroll-to-bottom": "^4.2.0",
     "resolve": "^1.18.1",
     "socket.io-client": "^4.4.1",
+    "styled-components": "^5.3.3",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

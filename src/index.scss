@@ -1,1 +1,8 @@
 @import '~bootstrap/scss/bootstrap';
+
+.home-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
