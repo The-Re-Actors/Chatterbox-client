@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Chatterbox-client/static/css/main.af9144bf.chunk.css",
-    "main.js": "/Chatterbox-client/static/js/main.c436a705.chunk.js",
-    "main.js.map": "/Chatterbox-client/static/js/main.c436a705.chunk.js.map",
+    "main.js": "/Chatterbox-client/static/js/main.6a30f77c.chunk.js",
+    "main.js.map": "/Chatterbox-client/static/js/main.6a30f77c.chunk.js.map",
     "runtime-main.js": "/Chatterbox-client/static/js/runtime-main.5612a794.js",
     "runtime-main.js.map": "/Chatterbox-client/static/js/runtime-main.5612a794.js.map",
     "static/js/2.07a7481a.chunk.js": "/Chatterbox-client/static/js/2.07a7481a.chunk.js",
@@ -16,6 +16,6 @@
     "static/js/runtime-main.5612a794.js",
     "static/js/2.07a7481a.chunk.js",
     "static/css/main.af9144bf.chunk.css",
-    "static/js/main.c436a705.chunk.js"
+    "static/js/main.6a30f77c.chunk.js"
   ]
 }
