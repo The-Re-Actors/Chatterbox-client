@@ -37,7 +37,8 @@ export const updateProfile = (id, formData, user) => {
     data: {
       userProfile: {
         username: formData
-      }
+      },
+      userId: user._id
     }
   })
 }

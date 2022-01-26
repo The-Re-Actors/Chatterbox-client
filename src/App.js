@@ -123,7 +123,9 @@ class App extends Component {
           <AuthenticatedRoute
             user={user}
             path='/profile'
-            render={() => <Profile msgAlert={this.msgAlert} user={user} />}
+            render={() => (
+              <Profile msgAlert={this.msgAlert} user={user} setUser={this.setUser} />
+            )}
           />
           {/* </main> */}
         </Fragment>

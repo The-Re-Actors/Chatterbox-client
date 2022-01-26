@@ -5,11 +5,10 @@ import Button from 'react-bootstrap/Button'
 import { createProfile, deleteProfile, updateProfile } from '../../api/profile'
 import { createProfileSuccess, createProfileFailure } from '../AutoDismissAlert/messages'
 
-function Profile ({ msgAlert, user }) {
+function Profile ({ msgAlert, setUser, user }) {
   const [userName, setUserName] = useState('')
   const [profileList, setProfileList] = useState(user.userProfile)
 
-  console.log('proflist ', profileList)
   const onSubmitProfile = (event) => {
     event.preventDefault()
 
@@ -17,6 +16,7 @@ function Profile ({ msgAlert, user }) {
       .then(res => {
         console.log(res.data.userProfile)
         setProfileList(prev => [...prev, res.data.userProfile])
+        setUserName('')
       })
       .then(() =>
         msgAlert({
@@ -41,12 +41,13 @@ function Profile ({ msgAlert, user }) {
   const onUpdateProfile = ({ target }) => {
     console.log('id ', target.className.slice(0, 24))
     const id = target.className.slice(0, 24)
+    console.log('user id ', user._id)
     updateProfile(id, userName, user)
       .then((res) => {
-        console.log('update successful', res.data)
-        const profileArray = profileList.filter(profile => profile._id !== id)
-        profileArray.push(res.data.userProfile)
-        setProfileList(profileArray)
+        console.log(res.data.user)
+        setUser(res.data.user)
+        setProfileList(res.data.user.userProfile)
+        setUserName('')
       })
       .catch(console.error)
   }
@@ -91,7 +92,7 @@ function Profile ({ msgAlert, user }) {
               onChange={handleChange}
             />
           </Form.Group>
-          <Button variant='primary' type='submit'>Submit</Button>
+          <Button variant='primary' type='submit'>Create</Button>
         </Form>
         <div>
           {renderProfiles()}
