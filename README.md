@@ -2,9 +2,10 @@
 
 Chatterbox allows users to pick a username upon entering, and start messaging with other users also connected in a real-time chat environment.
 
-# Important Links
+# Links
+Link to back-end repo: https://github.com/The-Re-Actors/Chatterbox-API
 
-https://the-re-actors.github.io/Chatterbox-client/
+Link to deployed website: https://the-re-actors.github.io/Chatterbox-client/
 
 # Planning Story
 
