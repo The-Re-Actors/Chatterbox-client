@@ -71,8 +71,8 @@ class App extends Component {
             exact
             path='/'
             render={() => (
-              <Fragment className='justify-content-center'>
-                <Row >
+              <Fragment>
+                <Row className='justify-content-center'>
                   {/* <Col md='12'> */}
                   <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
                   {/* </Col>
@@ -124,7 +124,11 @@ class App extends Component {
             user={user}
             path='/profile'
             render={() => (
-              <Profile msgAlert={this.msgAlert} user={user} setUser={this.setUser} />
+              <Profile
+                msgAlert={this.msgAlert}
+                user={user}
+                setUser={this.setUser}
+              />
             )}
           />
           {/* </main> */}
