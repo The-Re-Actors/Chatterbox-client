@@ -1,13 +1,11 @@
-import { Component } from 'react'
+import { useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 
 import { signOut } from '../../api/auth'
 import { signOutSuccess } from '../AutoDismissAlert/messages'
 
-class SignOut extends Component {
-  componentDidMount () {
-    const { msgAlert, history, clearUser, user } = this.props
-
+const SignOut = ({ msgAlert, user, clearUser, history }) => {
+  useEffect(() => {
     signOut(user)
       .finally(() =>
         msgAlert({
@@ -18,11 +16,9 @@ class SignOut extends Component {
       )
       .finally(() => history.push('/'))
       .finally(() => clearUser())
-  }
+  }, [])
 
-  render () {
-    return ''
-  }
+  return ''
 }
 
 export default withRouter(SignOut)

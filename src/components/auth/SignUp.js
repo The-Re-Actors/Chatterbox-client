@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 
 import { signUp, signIn } from '../../api/auth'
@@ -7,56 +7,59 @@ import { signUpSuccess, signUpFailure } from '../AutoDismissAlert/messages'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-class SignUp extends Component {
-  constructor (props) {
-    super(props)
+const SignUp = ({ msgAlert, setUser, history }) => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [passwordConfirmation, setPasswordConfirmation] = useState('')
 
-    this.state = {
-      email: '',
-      password: '',
-      passwordConfirmation: ''
+  const handleChange = ({ target }) => {
+    if (target.name === 'email') {
+      setEmail(target.value)
+    } else if (target.name === 'password') {
+      setPassword(target.value)
+    } else {
+      setPasswordConfirmation(target.value)
     }
   }
 
-handleChange = (event) =>
-  this.setState({
-    [event.target.name]: event.target.value
-  })
+  const onSignUp = (event) => {
+    event.preventDefault()
 
-onSignUp = (event) => {
-  event.preventDefault()
+    const formData = {
+      email,
+      password,
+      passwordConfirmation
+    }
 
-  const { msgAlert, history, setUser } = this.props
+    signUp(formData)
+      .then(() => signIn(formData))
+      .then((res) => setUser(res.data.user))
+      .then(() =>
+        msgAlert({
+          heading: 'Sign Up Success',
+          message: signUpSuccess,
+          variant: 'success'
+        })
+      )
+      .then(() => history.push('/profile'))
+      .catch((error) => {
+        setEmail('')
+        setPassword('')
+        setPasswordConfirmation('')
 
-  signUp(this.state)
-    .then(() => signIn(this.state))
-    .then((res) => setUser(res.data.user))
-    .then(() =>
-      msgAlert({
-        heading: 'Sign Up Success',
-        message: signUpSuccess,
-        variant: 'success'
+        msgAlert({
+          heading: 'Sign Up Failed with error: ' + error.message,
+          message: signUpFailure,
+          variant: 'danger'
+        })
       })
-    )
-    .then(() => history.push('/'))
-    .catch((error) => {
-      this.setState({ email: '', password: '', passwordConfirmation: '' })
-      msgAlert({
-        heading: 'Sign Up Failed with error: ' + error.message,
-        message: signUpFailure,
-        variant: 'danger'
-      })
-    })
-}
-
-render () {
-  const { email, password, passwordConfirmation } = this.state
+  }
 
   return (
     <div className='row'>
       <div className='col-sm-10 col-md-8 mx-auto mt-5'>
         <h3>Sign Up</h3>
-        <Form onSubmit={this.onSignUp}>
+        <Form onSubmit={onSignUp}>
           <Form.Group controlId='email'>
             <Form.Label>Email address</Form.Label>
             <Form.Control
@@ -65,7 +68,7 @@ render () {
               name='email'
               value={email}
               placeholder='Enter email'
-              onChange={this.handleChange}
+              onChange={handleChange}
             />
           </Form.Group>
           <Form.Group controlId='password'>
@@ -76,7 +79,7 @@ render () {
               value={password}
               type='password'
               placeholder='Password'
-              onChange={this.handleChange}
+              onChange={handleChange}
             />
           </Form.Group>
           <Form.Group controlId='passwordConfirmation'>
@@ -87,7 +90,7 @@ render () {
               value={passwordConfirmation}
               type='password'
               placeholder='Confirm Password'
-              onChange={this.handleChange}
+              onChange={handleChange}
             />
           </Form.Group>
           <Button variant='primary' type='submit'>Submit</Button>
@@ -95,7 +98,6 @@ render () {
       </div>
     </div>
   )
-}
 }
 
 export default withRouter(SignUp)

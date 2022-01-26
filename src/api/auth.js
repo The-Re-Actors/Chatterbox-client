@@ -20,10 +20,7 @@ export const signIn = (credentials) => {
     url: apiUrl + '/sign-in/',
     method: 'POST',
     data: {
-      credentials: {
-        email: credentials.email,
-        password: credentials.password
-      }
+      credentials
     }
   })
 }
