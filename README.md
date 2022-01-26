@@ -39,5 +39,5 @@ This project was executed with Create React App and real-time messaging capabili
 
 # Wireframes
 
-![Imgur](https://imgur.com/dup4eJq)
-![Imgur](https://imgur.com/1APygyB)
+https://imgur.com/1NszYhv
+https://imgur.com/m7WUR9v
