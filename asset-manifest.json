@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/Chatterbox-client/static/css/main.a22b3b3f.chunk.css",
-    "main.js": "/Chatterbox-client/static/js/main.e9ff9668.chunk.js",
-    "main.js.map": "/Chatterbox-client/static/js/main.e9ff9668.chunk.js.map",
+    "main.css": "/Chatterbox-client/static/css/main.af9144bf.chunk.css",
+    "main.js": "/Chatterbox-client/static/js/main.c436a705.chunk.js",
+    "main.js.map": "/Chatterbox-client/static/js/main.c436a705.chunk.js.map",
     "runtime-main.js": "/Chatterbox-client/static/js/runtime-main.5612a794.js",
     "runtime-main.js.map": "/Chatterbox-client/static/js/runtime-main.5612a794.js.map",
-    "static/js/2.b548a7b4.chunk.js": "/Chatterbox-client/static/js/2.b548a7b4.chunk.js",
-    "static/js/2.b548a7b4.chunk.js.map": "/Chatterbox-client/static/js/2.b548a7b4.chunk.js.map",
+    "static/js/2.07a7481a.chunk.js": "/Chatterbox-client/static/js/2.07a7481a.chunk.js",
+    "static/js/2.07a7481a.chunk.js.map": "/Chatterbox-client/static/js/2.07a7481a.chunk.js.map",
     "index.html": "/Chatterbox-client/index.html",
-    "static/css/main.a22b3b3f.chunk.css.map": "/Chatterbox-client/static/css/main.a22b3b3f.chunk.css.map",
-    "static/js/2.b548a7b4.chunk.js.LICENSE.txt": "/Chatterbox-client/static/js/2.b548a7b4.chunk.js.LICENSE.txt",
+    "static/css/main.af9144bf.chunk.css.map": "/Chatterbox-client/static/css/main.af9144bf.chunk.css.map",
+    "static/js/2.07a7481a.chunk.js.LICENSE.txt": "/Chatterbox-client/static/js/2.07a7481a.chunk.js.LICENSE.txt",
     "static/media/nudge.4b0f837d.mp3": "/Chatterbox-client/static/media/nudge.4b0f837d.mp3"
   },
   "entrypoints": [
     "static/js/runtime-main.5612a794.js",
-    "static/js/2.b548a7b4.chunk.js",
-    "static/css/main.a22b3b3f.chunk.css",
-    "static/js/main.e9ff9668.chunk.js"
+    "static/js/2.07a7481a.chunk.js",
+    "static/css/main.af9144bf.chunk.css",
+    "static/js/main.c436a705.chunk.js"
   ]
 }
