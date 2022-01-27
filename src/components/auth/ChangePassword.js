@@ -28,6 +28,10 @@ const ChangePassword = ({ msgAlert, history, user }) => {
     }
 
     changePassword(formData, user)
+      .then(() => {
+        setOldPassword('')
+        setNewPassword('')
+      })
       .then(() =>
         msgAlert({
           heading: 'Change Password Success',
@@ -35,7 +39,6 @@ const ChangePassword = ({ msgAlert, history, user }) => {
           variant: 'success'
         })
       )
-      .then(() => history.push('/'))
       .catch((error) => {
         this.setState({ oldPassword: '', newPassword: '' })
         msgAlert({
