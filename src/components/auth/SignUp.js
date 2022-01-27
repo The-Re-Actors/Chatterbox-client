@@ -60,7 +60,7 @@ const SignUp = ({ msgAlert, setUser, history }) => {
       <div className='col-sm-10 col-md-8 mx-auto mt-5'>
         <h3>Sign Up</h3>
         <Form onSubmit={onSignUp}>
-          <Form.Group controlId='email'>
+          <Form.Group controlId='sign-up-email'>
             <Form.Label>Email address</Form.Label>
             <Form.Control
               required
@@ -71,7 +71,7 @@ const SignUp = ({ msgAlert, setUser, history }) => {
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group controlId='password'>
+          <Form.Group controlId='sign-up-password'>
             <Form.Label>Password</Form.Label>
             <Form.Control
               required

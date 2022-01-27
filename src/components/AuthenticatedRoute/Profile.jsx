@@ -1,20 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 import { createProfile, deleteProfile, updateProfile } from '../../api/profile'
-import { createProfileSuccess, createProfileFailure } from '../AutoDismissAlert/messages'
+import {
+  createProfileSuccess,
+  createProfileFailure,
+  updateProfileSuccess,
+  updateProfileFailure,
+  deleteProfileSuccess,
+  deleteProfileFailure
+} from '../AutoDismissAlert/messages'
 
-function Profile ({ msgAlert, setUser, user }) {
+function Profile ({ msgAlert, setUser, user, currentProfile, setCurrentProfile }) {
   const [userName, setUserName] = useState('')
   const [profileList, setProfileList] = useState(user.userProfile)
+
+  useEffect(() => {
+    if (profileList[0]) {
+      setCurrentProfile(profileList[0])
+    }
+  }, [])
+
+  const handleChange = ({ target }) => {
+    setUserName(target.value)
+  }
 
   const onSubmitProfile = (event) => {
     event.preventDefault()
 
     createProfile(userName, user)
       .then(res => {
-        console.log(res.data.userProfile)
         setProfileList(prev => [...prev, res.data.userProfile])
         setUserName('')
       })
@@ -34,34 +50,51 @@ function Profile ({ msgAlert, setUser, user }) {
       })
   }
 
-  const handleChange = ({ target }) => {
-    setUserName(target.value)
-  }
-
   const onUpdateProfile = ({ target }) => {
-    console.log('id ', target.className.slice(0, 24))
     const id = target.className.slice(0, 24)
-    console.log('user id ', user._id)
     updateProfile(id, userName, user)
       .then((res) => {
-        console.log(res.data.user)
         setUser(res.data.user)
         setProfileList(res.data.user.userProfile)
         setUserName('')
       })
-      .catch(console.error)
+      .then(() =>
+        msgAlert({
+          heading: 'Profile Updated Successfully',
+          message: updateProfileSuccess,
+          variant: 'success'
+        })
+      )
+      .catch(error =>
+        msgAlert({
+          heading: 'Profile Update Failed with error: ' + error.message,
+          message: updateProfileFailure,
+          variant: 'danger'
+        })
+      )
   }
 
   const onDeleteProfile = (event) => {
-    console.log('id ', event.target.className.slice(0, 24))
     const id = event.target.className.slice(0, 24)
     deleteProfile(id, user)
       .then(() => {
-        console.log('deletion successful')
         const profileArray = profileList.filter(profile => profile._id !== id)
         setProfileList(profileArray)
       })
-      .catch(console.error)
+      .then(() =>
+        msgAlert({
+          heading: 'Profile Deleted Successfully',
+          message: deleteProfileSuccess,
+          variant: 'success'
+        })
+      )
+      .catch(error =>
+        msgAlert({
+          heading: 'Profile Deletion Failed with error: ' + error.message,
+          message: deleteProfileFailure,
+          variant: 'danger'
+        })
+      )
   }
 
   const renderProfiles = () => {
