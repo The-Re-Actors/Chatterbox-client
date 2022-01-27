@@ -12,7 +12,6 @@ export const getUserProfile = (user) => {
 }
 
 export const createProfile = (formData, user) => {
-  console.log('token is', user.token)
   return axios({
     url: apiUrl + '/profile/create',
     method: 'POST',
