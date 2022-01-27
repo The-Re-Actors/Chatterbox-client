@@ -30,7 +30,6 @@ const SignIn = ({ msgAlert, setUser, history }) => {
     signIn(formData)
       .then((res) => {
         setUser(res.data.user)
-        console.log('user ', res.data.user)
       })
       .then(() =>
         msgAlert({
