@@ -10,9 +10,6 @@ import './styles/chat.css'
 import nudgeSound from './styles/nudge.mp3'
 const displayPicture = 'https://2.bp.blogspot.com/_r1kMibaacEs/TLVQgzYP33I/AAAAAAAAJXk/j8T-F70lTQ8/s320/Windows+Live+Messenger+2011+v15.4.3502.922+FINAL+%28Espa%C3%B1ol%29.jpg'
 
-// import { getUserProfile } from '../../api/routes'
-
-// dev server
 const socket = io(apiUrl, {
   withCredentials: true
 })

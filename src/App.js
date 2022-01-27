@@ -12,9 +12,7 @@ import ChangePassword from './components/auth/ChangePassword'
 import Chat from './components/AuthenticatedRoute/Chat'
 import Profile from './components/AuthenticatedRoute/Profile'
 import { StyledContainer } from './components/styles/Container.styled'
-// import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-// import Col from 'react-bootstrap/Col'
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -46,42 +44,21 @@ const App = () => {
             deleteAlert={deleteAlert}
           />
         ))}
-        {/* <main className='container'> */}
-        {/* test to merge sign in sign up on landing page */}
-        {/* <Route
-            path='/'
-            element={<SignIn msgAlert={this.msgAlert} />}
-          /> */}
+    
         <Route
           exact
           path='/'
           render={() => (
             <Fragment>
               <Row className='justify-content-center'>
-                {/* <Col md='12'> */}
                 <SignIn msgAlert={msgAlert} setUser={setUser} />
-                {/* </Col>
-                <Col md='12'> */}
+
                 <SignUp msgAlert={msgAlert} setUser={setUser} />
-                {/* </Col> */}
               </Row>
             </Fragment>
           )}
         />
 
-        {/* end of test section  */}
-        {/* <Route
-            path='/sign-up'
-            render={() => (
-              <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
-            )}
-          />
-          <Route
-            path='/sign-in'
-            render={() => (
-              <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
-            )}
-          /> */}
         <AuthenticatedRoute
           user={user}
           path='/sign-out'
@@ -125,7 +102,6 @@ const App = () => {
             />
           )}
         />
-        {/* </main> */}
       </Fragment>
     </StyledContainer>
   )
