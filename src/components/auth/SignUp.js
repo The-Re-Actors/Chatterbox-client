@@ -12,6 +12,7 @@ const SignUp = ({ msgAlert, setUser, history }) => {
   const [password, setPassword] = useState('')
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
 
+  // Function to handle input changes in the form fields
   const handleChange = ({ target }) => {
     if (target.name === 'email') {
       setEmail(target.value)
@@ -22,6 +23,7 @@ const SignUp = ({ msgAlert, setUser, history }) => {
     }
   }
 
+  // Function called when the form is submitted
   const onSignUp = (event) => {
     event.preventDefault()
 
@@ -31,9 +33,10 @@ const SignUp = ({ msgAlert, setUser, history }) => {
       passwordConfirmation
     }
 
+    // Call the signUp function to register a new user
     signUp(formData)
-      .then(() => signIn(formData))
-      .then((res) => setUser(res.data.user))
+      .then(() => signIn(formData)) // Automatically sign in the newly registered user
+      .then((res) => setUser(res.data.user)) // Set the user in the application state
       .then(() =>
         msgAlert({
           heading: 'Sign Up Success',
@@ -41,7 +44,7 @@ const SignUp = ({ msgAlert, setUser, history }) => {
           variant: 'success'
         })
       )
-      .then(() => history.push('/profile'))
+      .then(() => history.push('/profile')) // Redirect the user to the profile page
       .catch((error) => {
         setEmail('')
         setPassword('')
@@ -93,7 +96,9 @@ const SignUp = ({ msgAlert, setUser, history }) => {
               onChange={handleChange}
             />
           </Form.Group>
-          <Button variant='primary' type='submit'>Submit</Button>
+          <Button variant='primary' type='submit'>
+						Submit
+          </Button>
         </Form>
       </div>
     </div>

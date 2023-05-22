@@ -1,6 +1,7 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
+// Function to get user profile
 export const getUserProfile = (user) => {
   return axios({
     url: apiUrl + '/profile/',
@@ -11,6 +12,7 @@ export const getUserProfile = (user) => {
   })
 }
 
+// Function to create user profile
 export const createProfile = (formData, user) => {
   return axios({
     url: apiUrl + '/profile/create',
@@ -26,6 +28,7 @@ export const createProfile = (formData, user) => {
   })
 }
 
+// Function to update user profile
 export const updateProfile = (id, formData, user) => {
   return axios({
     url: apiUrl + `/profile/${id}`,
@@ -42,6 +45,7 @@ export const updateProfile = (id, formData, user) => {
   })
 }
 
+// Function to delete user profile
 export const deleteProfile = (id, user) => {
   return axios({
     url: apiUrl + `/profile/${id}`,

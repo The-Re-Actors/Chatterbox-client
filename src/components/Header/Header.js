@@ -4,21 +4,29 @@ import Navbar from 'react-bootstrap/Navbar'
 import { NavLink } from 'react-router-dom'
 import { StyledHeader } from '../styles/Header.styled'
 
+// Options for authenticated users in the navigation bar
 const authenticatedOptions = (
   <Fragment>
-    <NavLink to='/profile' className='nav-link'>Profile</NavLink>
-    <NavLink to='/chat' className='nav-link'>Chat</NavLink>
-    <NavLink to='/change-password' className='nav-link'>Change Password</NavLink>
-    <NavLink to='/sign-out' className='nav-link'>Sign Out</NavLink>
+    <NavLink to='/profile' className='nav-link'>
+			Profile
+    </NavLink>
+    <NavLink to='/chat' className='nav-link'>
+			Chat
+    </NavLink>
+    <NavLink to='/change-password' className='nav-link'>
+			Change Password
+    </NavLink>
+    <NavLink to='/sign-out' className='nav-link'>
+			Sign Out
+    </NavLink>
   </Fragment>
 )
 
+// Header component
 const Header = ({ user }) => (
-  <Navbar expand='md' className="justify-content-center">
+  <Navbar expand='md' className='justify-content-center'>
     <Navbar.Brand>
-
       <img src='images/logo_white.png' alt='logo' />
-
     </Navbar.Brand>
     <StyledHeader>
       <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -27,6 +35,7 @@ const Header = ({ user }) => (
           {user && (
             <span className='navbar-text mr-2'>Welcome, {user.email}</span>
           )}
+          {/* Render authenticated options if user is authenticated */}
           {user ? authenticatedOptions : ''}
         </Nav>
       </Navbar.Collapse>

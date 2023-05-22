@@ -16,16 +16,19 @@ function Profile ({ msgAlert, setUser, user, currentProfile, setCurrentProfile }
   const [userName, setUserName] = useState('')
   const [profileList, setProfileList] = useState(user.userProfile)
 
+  // Set the current profile when the component mounts
   useEffect(() => {
     if (profileList[0]) {
       setCurrentProfile(profileList[0])
     }
   }, [])
 
+  // Handle changes in the input field
   const handleChange = ({ target }) => {
     setUserName(target.value)
   }
 
+  // Submit a new profile
   const onSubmitProfile = (event) => {
     event.preventDefault()
 
@@ -50,6 +53,7 @@ function Profile ({ msgAlert, setUser, user, currentProfile, setCurrentProfile }
       })
   }
 
+  // Update a profile
   const onUpdateProfile = ({ target }) => {
     const id = target.className.slice(0, 24)
     updateProfile(id, userName, user)
@@ -74,6 +78,7 @@ function Profile ({ msgAlert, setUser, user, currentProfile, setCurrentProfile }
       )
   }
 
+  // Delete a profile
   const onDeleteProfile = (event) => {
     const id = event.target.className.slice(0, 24)
     deleteProfile(id, user)
@@ -97,6 +102,7 @@ function Profile ({ msgAlert, setUser, user, currentProfile, setCurrentProfile }
       )
   }
 
+  // Render the profile list
   const renderProfiles = () => {
     return profileList.map(({ username, _id }, index) => (
       <div key={index}>

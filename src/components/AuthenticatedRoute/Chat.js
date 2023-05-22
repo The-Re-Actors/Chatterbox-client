@@ -8,8 +8,10 @@ import ScrollToBottom from 'react-scroll-to-bottom'
 
 import './styles/chat.css'
 import nudgeSound from './styles/nudge.mp3'
-const displayPicture = 'https://2.bp.blogspot.com/_r1kMibaacEs/TLVQgzYP33I/AAAAAAAAJXk/j8T-F70lTQ8/s320/Windows+Live+Messenger+2011+v15.4.3502.922+FINAL+%28Espa%C3%B1ol%29.jpg'
+const displayPicture =
+	'https://2.bp.blogspot.com/_r1kMibaacEs/TLVQgzYP33I/AAAAAAAAJXk/j8T-F70lTQ8/s320/Windows+Live+Messenger+2011+v15.4.3502.922+FINAL+%28Espa%C3%B1ol%29.jpg'
 
+// Connect to the socket.io server
 const socket = io(apiUrl, {
   withCredentials: true
 })
@@ -19,26 +21,31 @@ function Chat ({ user }) {
   const [chat, setChat] = useState([])
   const [textColor, setTextColor] = useState('#000000')
 
+  // Set the username from the user profile if available
   useEffect(() => {
     if (user.userProfile[0]) {
       setState({ name: user.userProfile[0].username })
     }
   }, [])
 
+  // Listen for incoming messages from the server
   useEffect(() => {
     socket.on('message', ({ name, message }) => {
       setChat([...chat, { name, message }])
     })
   })
 
+  // Handle changes in the input fields
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.value })
   }
 
-  const handleColorChange = event => {
+  // Handle color change for text
+  const handleColorChange = (event) => {
     setTextColor(event.target.value)
   }
 
+  // Handle the "nudge" action
   const handleNudge = () => {
     const window = document.body
     const { name } = state
@@ -50,22 +57,26 @@ function Chat ({ user }) {
     }, 1000)
   }
 
+  // Play the nudge sound
   const playNudgeSound = () => {
     const useSound = new Audio(nudgeSound)
     useSound.play()
   }
 
-  const handleKeyPress = event => {
+  // Handle key press events
+  const handleKeyPress = (event) => {
     if (event.key === 'Enter' && !event.shiftKey) {
       onMessageSubmit(event)
     }
   }
 
+  // Reset the message input field
   const handleReset = (event) => {
     event.preventDefault()
     setState({ message: '' })
   }
 
+  // Submit a new message
   const onMessageSubmit = (event) => {
     event.preventDefault()
     const { name, message } = state
@@ -73,13 +84,15 @@ function Chat ({ user }) {
     setState({ message: '', name })
   }
 
+  // Render the chat messages
   const renderChat = () => {
     return (
       <ScrollToBottom className='message-scroll'>
         {chat.map(({ name, message }, index) => (
           <div key={index}>
             <h3>
-              <span style={{ fontWeight: 'bold' }}>{name}:</span> <span style={{ color: textColor }}>{message}</span>
+              <span style={{ fontWeight: 'bold' }}>{name}:</span>{' '}
+              <span style={{ color: textColor }}>{message}</span>
             </h3>
           </div>
         ))}
@@ -119,7 +132,7 @@ function Chat ({ user }) {
                 id='nudge-button'
                 title='Send a nudge'
                 onClick={(e) => handleNudge(e)}>
-  🥴
+								🥴
               </button>
 
               <Form.Control

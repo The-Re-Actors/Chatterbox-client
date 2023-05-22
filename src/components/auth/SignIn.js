@@ -8,9 +8,11 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 const SignIn = ({ msgAlert, setUser, history }) => {
+  // State variables for email and password
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  // Event handler for input changes
   const handleChange = ({ target }) => {
     if (target.name === 'email') {
       setEmail(target.value)
@@ -19,16 +21,20 @@ const SignIn = ({ msgAlert, setUser, history }) => {
     }
   }
 
+  // Event handler for submitting the sign in form
   const onSignIn = (event) => {
     event.preventDefault()
 
+    // Creating formData object with email and password
     const formData = {
       email,
       password
     }
 
+    // Calling the signIn API function
     signIn(formData)
       .then((res) => {
+        // Set the user in the application state
         setUser(res.data.user)
       })
       .then(() =>
@@ -40,6 +46,7 @@ const SignIn = ({ msgAlert, setUser, history }) => {
       )
       .then(() => history.push('/chat'))
       .catch((error) => {
+        // Reset the input fields
         setEmail('')
         setPassword('')
         msgAlert({
@@ -55,6 +62,7 @@ const SignIn = ({ msgAlert, setUser, history }) => {
       <div className='col-sm-10 col-md-8 mx-auto mt-5'>
         <h3>Sign In</h3>
         <Form onSubmit={onSignIn}>
+          {/* Form inputs for email */}
           <Form.Group controlId='sign-in-email'>
             <Form.Label>Email address</Form.Label>
             <Form.Control
@@ -66,6 +74,8 @@ const SignIn = ({ msgAlert, setUser, history }) => {
               onChange={handleChange}
             />
           </Form.Group>
+
+          {/* Form inputs for password */}
           <Form.Group controlId='sign-in-password'>
             <Form.Label>Password</Form.Label>
             <Form.Control
@@ -77,7 +87,11 @@ const SignIn = ({ msgAlert, setUser, history }) => {
               onChange={handleChange}
             />
           </Form.Group>
-          <Button variant='primary' type='submit'>Submit</Button>
+
+          {/* Submit button */}
+          <Button variant='primary' type='submit'>
+						Submit
+          </Button>
         </Form>
       </div>
     </div>

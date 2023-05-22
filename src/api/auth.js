@@ -1,6 +1,8 @@
+// Importing dependencies and modules
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
+// Function to sign up a user
 export const signUp = (credentials) => {
   return axios({
     method: 'POST',
@@ -15,6 +17,7 @@ export const signUp = (credentials) => {
   })
 }
 
+// Function to sign in a user
 export const signIn = (credentials) => {
   return axios({
     url: apiUrl + '/sign-in/',
@@ -25,6 +28,7 @@ export const signIn = (credentials) => {
   })
 }
 
+// Function to sign out a user
 export const signOut = (user) => {
   return axios({
     url: apiUrl + '/sign-out/',
@@ -35,6 +39,7 @@ export const signOut = (user) => {
   })
 }
 
+// Function to change user password
 export const changePassword = (passwords, user) => {
   return axios({
     url: apiUrl + '/change-password/',

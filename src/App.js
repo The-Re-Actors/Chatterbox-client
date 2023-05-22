@@ -1,4 +1,6 @@
 /* eslint-disable no-tabs */
+
+// Importing necessary dependencies and components
 import React, { useState, Fragment } from 'react'
 import { Route } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
@@ -14,17 +16,22 @@ import Profile from './components/AuthenticatedRoute/Profile'
 import { StyledContainer } from './components/styles/Container.styled'
 import Row from 'react-bootstrap/Row'
 
+// App component
 const App = () => {
+  // State variables
   const [user, setUser] = useState(null)
   const [currentProfile, setCurrentProfile] = useState(null)
   const [msgAlerts, setMsgAlerts] = useState([])
 
+  // Function to clear the user state
   const clearUser = () => setUser(null)
 
-  const deleteAlert = id => {
+  // Function to delete an alert by its ID
+  const deleteAlert = (id) => {
     setMsgAlerts(msgAlerts.filter(msg => msg.id !== id))
   }
 
+  // Function to add a new alert to the message alerts
   const msgAlert = ({ heading, message, variant }) => {
     const id = uuid()
     setMsgAlerts([...msgAlerts, { heading, message, variant, id }])
@@ -33,7 +40,10 @@ const App = () => {
   return (
     <StyledContainer>
       <Fragment>
+        {/* Render the Header component */}
         <Header user={user} />
+
+        {/* Render the AutoDismissAlert components for each message alert */}
         {msgAlerts.map((msgAlert) => (
           <AutoDismissAlert
             key={msgAlert.id}
@@ -44,25 +54,30 @@ const App = () => {
             deleteAlert={deleteAlert}
           />
         ))}
-    
+
+        {/* Routes */}
         <Route
           exact
           path='/'
           render={() => (
             <Fragment>
               <Row className='justify-content-center'>
+                {/* Render the SignIn component */}
                 <SignIn msgAlert={msgAlert} setUser={setUser} />
 
+                {/* Render the SignUp component */}
                 <SignUp msgAlert={msgAlert} setUser={setUser} />
               </Row>
             </Fragment>
           )}
         />
 
+        {/* Authenticated routes */}
         <AuthenticatedRoute
           user={user}
           path='/sign-out'
           render={() => (
+            // Render the SignOut component
             <SignOut
               msgAlert={msgAlert}
               clearUser={clearUser}
@@ -74,25 +89,28 @@ const App = () => {
           user={user}
           path='/change-password'
           render={() => (
+            // Render the ChangePassword component
             <ChangePassword msgAlert={msgAlert} user={user} />
           )}
         />
         <AuthenticatedRoute
           user={user}
           path='/chat'
-          render={() =>
+          render={() => (
+            // Render the Chat component
             <Chat
               msgAlert={msgAlert}
               user={user}
               currentProfile={currentProfile}
               setCurrentProfile={setCurrentProfile}
             />
-          }
+          )}
         />
         <AuthenticatedRoute
           user={user}
           path='/profile'
           render={() => (
+            // Render the Profile component
             <Profile
               msgAlert={msgAlert}
               user={user}
@@ -107,4 +125,5 @@ const App = () => {
   )
 }
 
+// Export the App component as the default export
 export default App
