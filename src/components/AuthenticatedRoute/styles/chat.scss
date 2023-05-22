@@ -1,0 +1,157 @@
+$primary-color: #E9F3F6;
+$secondary-color: #C4D5DF;
+$accent-color: #D2DDE0;
+$background-color: #FAFBFD;
+$highlight-color: #E4EBE3;
+$gradient-start: rgba(247, 253, 255, 1);
+$gradient-mid: rgba(214, 227, 234, 1);
+$gradient-end: rgba(238, 249, 250, 1);
+
+* {
+  font-family: sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+.window {
+  background-color: $primary-color;
+  border: 1px solid $secondary-color;
+  border-radius: 2%;
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.3);
+  height: 620px;
+  width: 720px;
+  transform-origin: center center;
+  margin: 5vh auto;
+}
+
+.container {
+  display: inline-grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 170px;
+  grid-template-rows: 1fr 175px 10px;
+  height: 560px;
+  padding: 10px;
+}
+
+.item {
+  border: 2px solid $accent-color;
+  border-radius: 2px;
+}
+
+.bar {
+  border: 0;
+  grid-column: 1 / -1;
+}
+
+.top-bar {
+  display: flex;
+  padding: 10px;
+
+  .username {
+    font-weight: bold;
+    margin-bottom: 3px;
+  }
+
+  .logo {
+    height: 100%;
+    margin-right: 5px;
+    width: 30px;
+  }
+}
+
+.bar__bottom {
+  background: $gradient-start;
+  background: linear-gradient(180deg,
+      $gradient-start 0%,
+      $gradient-mid 50%,
+      $gradient-end 100%);
+  border-bottom: 1px solid $accent-color;
+  border-top: 1px solid $accent-color;
+  display: flex;
+  height: 50px;
+}
+
+.img {
+  background-color: $background-color;
+  max-height: 150px;
+  padding: 10px;
+  position: relative;
+
+  .img-display-picture {
+    border: 1px solid $highlight-color;
+    padding: 2px;
+
+    img {
+      max-width: 125px;
+      max-height: 125px;
+    }
+  }
+}
+
+.chat-box {
+  background-color: $background-color;
+  padding: 5% 0;
+
+  .message-scroll {
+    height: 300px;
+    overflow-y: auto;
+
+    .message {
+      margin-left: 20px;
+      width: fit-content;
+    }
+
+    .message-buttons-bar {
+      justify-content: end;
+      margin-right: 5vw;
+
+      .message-buttons {
+        background: transparent;
+        border: 0;
+        font-size: 1.3rem;
+      }
+    }
+
+    .message-submit {
+      display: block;
+      float: right;
+      position: relative;
+      margin-top: -110px;
+      margin-right: -20px;
+      height: 8vh;
+
+      .message-submit-button,
+      .message-clear-button {
+        height: 50%;
+        margin-right: 2px;
+        margin-top: 3px;
+      }
+    }
+
+    .message-box {
+      max-width: 87%;
+    }
+  }
+}
+
+.is-nudged {
+  animation-name: nudge;
+  animation-duration: 100ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes nudge {
+  @for $i from 2% through 98% {
+    #{$i} {
+      transform: translateX($i % 2.5px) translateY($i % 2.5px) rotate($i % 2.5deg);
+    }
+  }
+
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0);
+  }
+}
